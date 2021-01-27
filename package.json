@@ -1,0 +1,29 @@
+{
+  "name": "new-reddit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack",
+    "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
+    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "html-webpack-plugin": "^4.5.1",
+    "ts-loader": "^8.0.13",
+    "typescript": "^4.1.3",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1",
+    "webpack-node-externals": "^2.5.2"
+  },
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  }
+}
