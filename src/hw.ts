@@ -1,14 +1,20 @@
 import React from "react";
 
-//1. string;
+//1.
+function concat(x: string, y: string): string {
+    return x + y;
+}
+
+concat('Hello ', 'World');
+
 //2
  interface MyInt {
     howIDoIt: string;
     simeArray: (string | number)[];
-    withData: Array<MyInt>
+    withData?: Array<MyInt>
 }
 
-const MyHometask = {
+const MyHometask:MyInt = {
     howIDoIt: "I Do It Wel",
     simeArray: ["string one", "string two", 42],
     withData: [{ howIDoIt: "I Do It Wel", simeArray: ["string one", 23] }],
@@ -18,12 +24,12 @@ const MyHometask = {
 
 interface  MyArrayInt<T> {
     [N: number]: T;
-    reduce(fn: (prevV: T, currV: T, index: number, arr: MyArrayInt<T>) => T): T;
+    reduce<U>(fn: (prevV: U, currV: T, index: number, arr: MyArrayInt<T>) => U): U;
 }
+ const myArray1: MyArrayInt<string | number> = [1,2,3, 'str'];
 
-myArray.reduce(function (sum, current) {
-    return sum + current
-});
+myArray1.reduce<string>(((prevV, currV) => prevV + currV));
+
 
 //4
 
