@@ -1,0 +1,82 @@
+@import "src/colors";
+
+
+.controls {
+  padding: 10px 20px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+
+.carmaCounter > * + *{
+  padding: 0 0 0 4px;
+}
+
+.carmaValue {
+  color: $grayC4;
+}
+
+svg.down {
+  transform: rotate(180deg);
+}
+
+.commentsButton {
+  display: flex;
+  align-items: normal;
+}
+
+.commentsButton * {
+  color: $grayC4;
+}
+
+.commentsNumber {
+  padding: 0 0 0 6px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.shareBtn, .saveBtn {
+  width: 20px;
+  height: 20px;
+}
+
+@media all and (min-width: 1024px) {
+  .controls {
+    order: 3;
+    flex: 0 0;
+    margin: 0 0 0 24px;
+    padding: 0;
+  }
+
+  .carmaCounter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: column nowrap;
+  }
+  .carmaCounter > * + * {
+    padding: 7px 0 0;
+  }
+
+  .actions, .commentsButton {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1540px){
+  .carmaCounter > button.up:hover > svg > path {
+    fill: $green;
+  }
+
+  .carmaCounter > button.down:hover > svg > path {
+    fill: $orange;
+  }
+
+  .controls {
+    position: relative;
+  }
+
+  .card:hover h2 a, .card:focus-within h2 a {
+    color: $orange;
+  }
+}
