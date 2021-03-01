@@ -8,7 +8,7 @@
   justify-content: space-between;
 }
 
-.carmaCounter > * + *{
+.carmaCounter > * + * {
   padding: 0 0 0 4px;
 }
 
@@ -20,25 +20,10 @@ svg.down {
   transform: rotate(180deg);
 }
 
-.commentsButton {
+.actions {
   display: flex;
-  align-items: normal;
 }
 
-.commentsButton * {
-  color: $grayC4;
-}
-
-.commentsNumber {
-  padding: 0 0 0 6px;
-  font-size: 12px;
-  line-height: 14px;
-}
-
-.shareBtn, .saveBtn {
-  width: 20px;
-  height: 20px;
-}
 
 @media all and (min-width: 1024px) {
   .controls {
@@ -58,12 +43,16 @@ svg.down {
     padding: 7px 0 0;
   }
 
-  .actions, .commentsButton {
+  .actions {
+    display: none;
+  }
+
+  .commentsBtn {
     display: none;
   }
 }
 
-@media all and (min-width: 1540px){
+@media all and (min-width: 1540px) {
   .carmaCounter > button.up:hover > svg > path {
     fill: $green;
   }

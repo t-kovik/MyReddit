@@ -1,0 +1,51 @@
+@import "src/colors";
+
+.btn {
+  display: flex;
+
+  svg {
+    flex-shrink: 0;
+  }
+}
+
+.btn * {
+  color: $grayC4;
+}
+
+.btnText, .btnCloseText {
+  padding: 0 0 0 6px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.btnClose {
+  background: $grayD9;
+  border-radius: 0 0 3px 3px;
+}
+
+.btnCloseText {
+  color: $gray66;
+}
+
+
+
+@media all and (min-width: 1024px) {
+  .btn, .btnClose {
+    padding: 10px 20px;
+  }
+  .btn:not(:first-child) {
+    border-top: 1px solid $grayEC;
+  }
+
+  .carmaCounter > button.up:hover > svg > path {
+    fill: $green;
+  }
+
+  .btnText:hover {
+    color: $orange;
+  }
+
+  .btn:hover > svg > path {
+    fill: $orange;
+  }
+}

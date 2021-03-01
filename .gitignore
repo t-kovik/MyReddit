@@ -3,3 +3,5 @@ node_modules
 dist
 example.tsx
 hw.ts
+compose.examples.tsx
+Functionalexample.tsx

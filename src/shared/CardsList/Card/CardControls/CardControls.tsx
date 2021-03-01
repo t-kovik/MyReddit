@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './cardcontrols.scss';
-import {CommentsButton} from "./CommentsButton";
-import {SaveBtn} from "./SaveBtn";
-import {ShareBtn} from "./ShareBtn";
+import {CommentsButton} from "../../../Button/CommentsButton";
+import {SaveBtn} from "../../../Button/SaveBtn";
+import {ShareBtn} from "../../../Button/ShareBtn";
+
 
 export function CardControls() {
   return (
@@ -20,7 +21,10 @@ export function CardControls() {
             </svg>
           </button>
         </div>
-        <CommentsButton />
+          <div className={styles.commentsBtn}>
+              <CommentsButton />
+          </div>
+
         <div className={styles.actions}>
           <ShareBtn />
           <SaveBtn />
