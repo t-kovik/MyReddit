@@ -8,29 +8,33 @@ import {CardsList} from "./shared/CardsList";
 //import { MyHooks, useIsMounted } from "./FunctionalExample";
 //import {getValue} from "./utils/react/pickFromSynthetic";
 //import { GenericList } from "./shared/GenericList";
-import {generateId, generateRandomString} from "./utils/react/generateRandomIndex";
+//import {generateId, generateRandomString} from "./utils/react/generateRandomIndex";
 //import {merge} from "./utils/js/merge";
 import {Dropdown} from "./shared/Dropdown";
-import {DropdownMenu} from "./shared/Dropdown/DropdownMenu";
+import {Icon} from "./shared/Icon";
+import {Button} from "./shared/Button";
+import {CardMenuItemsList} from "./shared/CardsList/Card/CardMenu/CardMenuItemsList";
+//import {DropdownMenu} from "./shared/CardsList/Card/DropdownMenu";
+//import {Text} from "./shared/Text";
 
-export const LIST = [
-    {text: 'some'},
-    {text: 'other some'},
-    {text: 'some'},
-].map((item) => ({...item, id: generateRandomString()}))
+// export const LIST = [
+//     {text: 'some'},
+//     {text: 'other some'},
+//     {text: 'some'},
+// ].map((item) => ({...item, id: generateRandomString()}))
 
 
 function AppComponent() {
     //const [ isVisible, setIsVisible ] = React.useState(false);
     // const [ title, setTitle ] = React.useState('');
     // const [isVisible] = useIsMounted();
-    const [list, setList] = React.useState(LIST);
-    const handleItemClick = (id: string) => {
-        setList(list.filter((item) => item.id != id))
-    }
-    const handleAdd = () => {
-        setList(list.concat({id: generateRandomString(), text: generateRandomString()}))
-    }
+    // const [list, setList] = React.useState(LIST);
+    // const handleItemClick = (id: string) => {
+    //     setList(list.filter((item) => item.id != id))
+    // }
+    // const handleAdd = () => {
+    //     setList(list.concat({id: generateRandomString(), text: generateRandomString()}))
+    // }
     return (
         <Layout>
             <Header/>
@@ -44,12 +48,12 @@ function AppComponent() {
                 {/*    <GenericList list={LIST.map((item) => ({...item, onClick: () => {console.log(item.id)}}))} />*/}
                 {/*<div style={{padding: 20}}>*/}
                 {/*    <br/>*/}
-                {/*    /!*<Dropdown onClose={() => console.log('closed')}*!/*/}
-                {/*    /!*          onOpen={() => console.log('opened')}*!/*/}
-                {/*    /!*          isOpen={false}*!/*/}
-                {/*    /!*          button={<button>Test</button>}>*!/*/}
-                {/*    /!*   <CardsList />*!/*/}
-                {/*    /!*</Dropdown>*!/*/}
+                {/*    <Dropdown onClose={() => console.log('closed')}*/}
+                {/*              onOpen={() => console.log('opened')}*/}
+                {/*              isOpen={false}*/}
+                {/*              button={<button>Test</button>}>*/}
+                {/*       <CardsList />*/}
+                {/*    </Dropdown>*/}
                 {/*</div>*/}
             </Content>
         </Layout>
@@ -57,4 +61,4 @@ function AppComponent() {
 }
 
 export const App = hot(() => <AppComponent/>);
-// export const App = hot(AppComponent);
+//export const App = hot(AppComponent);

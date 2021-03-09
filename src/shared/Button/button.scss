@@ -1,10 +1,11 @@
-@import "src/colors";
+@import "../../colors";
 
 .btn {
   display: flex;
 
   svg {
     flex-shrink: 0;
+    margin-right: 6px;
   }
 }
 
@@ -19,6 +20,7 @@
 }
 
 .btnClose {
+  width: 100%;
   background: $grayD9;
   border-radius: 0 0 3px 3px;
 }
@@ -27,21 +29,13 @@
   color: $gray66;
 }
 
-
+.btn, .btnClose {
+  padding: 10px 20px;
+}
 
 @media all and (min-width: 1024px) {
-  .btn, .btnClose {
-    padding: 10px 20px;
-  }
-  .btn:not(:first-child) {
-    border-top: 1px solid $grayEC;
-  }
 
-  .carmaCounter > button.up:hover > svg > path {
-    fill: $green;
-  }
-
-  .btnText:hover {
+  button span:hover {
     color: $orange;
   }
 

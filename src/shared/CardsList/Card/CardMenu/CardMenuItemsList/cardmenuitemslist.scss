@@ -1,0 +1,26 @@
+@import "src/colors";
+
+.menuNth1,
+.menuNth2,
+.menuNth4 {
+  display: none;
+}
+
+svg > use {
+  display: inline-block;
+}
+
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: $grayEC;
+}
+
+@media all and (min-width: 1024px) {
+  .menuNth1,
+  .menuNth2,
+  .menuNth4 {
+    display: block;
+  }
+}

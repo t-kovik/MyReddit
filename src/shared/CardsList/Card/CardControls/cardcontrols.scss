@@ -8,15 +8,11 @@
   justify-content: space-between;
 }
 
-.carmaCounter > * + * {
-  padding: 0 0 0 4px;
-}
-
 .carmaValue {
   color: $grayC4;
 }
 
-svg.down {
+.down {
   transform: rotate(180deg);
 }
 
@@ -39,9 +35,9 @@ svg.down {
     justify-content: center;
     flex-flow: column nowrap;
   }
-  .carmaCounter > * + * {
-    padding: 7px 0 0;
-  }
+  //.carmaCounter > * + * {
+  //  padding: 7px 0 0;
+  //}
 
   .actions {
     display: none;

@@ -4,14 +4,15 @@ import {CardTextContent} from "./CardTextContent";
 import {CardPreview} from "./CardPreview";
 import {CardMenu} from "./CardMenu";
 import {CardControls} from "./CardControls";
-import {DropdownMenu} from "../../Dropdown/DropdownMenu";
+import {Icon} from "../../Icon";
+import {Content} from "../../Content";
 
 export function Card() {
   return (
       <li className={styles.card}>
         <CardTextContent />
         <CardPreview />
-        <DropdownMenu />
+          <CardMenu />
         <CardControls />
       </li>
   );

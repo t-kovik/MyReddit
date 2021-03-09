@@ -1,7 +1,7 @@
 const path = require('path');
 const {HotModuleReplacementPlugin} = require('webpack');
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');
-
+const SpriteLoaderPlugin = require('svg-sprite-loader/plugin');
 const NODE_ENV = process.env.NODE_ENV;
 const IS_DEV = NODE_ENV === 'development';
 const IS_PROD = NODE_ENV === 'production';
@@ -59,6 +59,14 @@ module.exports = {
             {
                 test: GLOBAL_CSS_REGEXP,
                 use: ['style-loader', 'css-loader', 'sass-loader']
+            },
+            {
+                test: /\.svg$/,
+                loader: 'url-loader'
+            },
+            {
+                test   : /\.(ttf|eot|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                loader : 'file-loader'
             }
         ]
     },
@@ -67,6 +75,7 @@ module.exports = {
         ? [
             new HotModuleReplacementPlugin(),
             new CleanWebpackPlugin(),
+            new SpriteLoaderPlugin(),
         ]
         : [],
 };
