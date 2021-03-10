@@ -7,7 +7,7 @@
     "build": "./node_modules/.bin/webpack",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
     "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development node ./bin/dev.js",
+    "dev": "cross-env NODE_ENV=development CLIENT_ID=xQCWNRd1p7KWtw node ./bin/dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -34,9 +34,11 @@
     "sass": "^1.32.6",
     "sass-loader": "^10.1.1",
     "style-loader": "^1.1.3",
+    "svg-sprite-loader": "^5.2.1",
     "ts-jest": "^26.4.4",
     "ts-loader": "^8.0.13",
     "typescript": "^4.1.3",
+    "url-loader": "^4.1.1",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.3.1",
     "webpack-dev-middleware": "^3.7.2",
