@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styles from './cardtextcontent.scss';
 import {UserLink} from "./UserLink";
 
-export function CardTextContent() {
+interface IProps {
+    title?: string,
+    author?: string,
+    avatar?: string,
+    date?: string
+}
+
+export function CardTextContent({title, author, avatar, date} : IProps) {
   return (
       <div className={styles.textContent}>
         <div className={styles.metaData}>
-          <UserLink />
+          <UserLink author={author} avatar={avatar} />
           <span className={styles.createdAt}>
                 <span className={styles.publishedLabel}>опубликовано </span>
-                4 часа назад
+              {date}
             </span>
         </div>
         <h2 className={styles.title}>
-          <a href="#post-url" className={styles.postLink}>Следует отметить, что новая модель организационного
-          </a>
+          <a href="#post-url" className={styles.postLink}>{title}</a>
         </h2>
       </div>
   );

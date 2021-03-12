@@ -1,14 +1,20 @@
 import React from 'react';
 import styles from './cardpreview.scss';
 
-export function CardPreview() {
-  return (
-      <div className={styles.preview}>
-        <img
-            className={styles.previewImg}
-            src="https://avatars.mds.yandex.net/get-kinopoisk-post-img/1101236/e1e09992d39f539b736c891a42960a39/960x540"
-            alt="preview"
-        />
-      </div>
-  );
+interface IProps {
+    preview?: string
+}
+
+export function CardPreview({preview}: IProps) {
+    return (
+        <div className={styles.preview}>
+            {
+                preview
+                    ? <img src={preview} alt="preview" className={styles.previewImg}/>
+                    : <img
+                        src='https://images.ctfassets.net/lzny33ho1g45/how-to-use-reddit-p-img/53846daa58db6447804f4b21d55d4a1f/file.png?w=1520&fm=jpg&q=30&fit=thumb&h=760'
+                        alt="preview" className={styles.previewImg}/>
+            }
+        </div>
+    );
 }

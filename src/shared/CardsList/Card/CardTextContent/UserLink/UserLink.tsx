@@ -1,16 +1,24 @@
 import React from 'react';
 import styles from './userlink.scss';
+import {Icon} from "../../../../Icon";
 
-export function UserLink() {
+interface IProps {
+    author?: string,
+    avatar?: string
+}
+
+
+export function UserLink({author, avatar} : IProps) {
   return (
       <div className={styles.userLink}>
-        <img
-            className={styles.avatar}
-            src="https://sib.fm/storage/article/February2020/Z0tp5pg7QDhkIZ06GKhM.jpg"
-            alt="avatar"
-        />
+            {
+                avatar
+                    ? <img src={avatar} alt="avatar" className={styles.avatar}/>
+                    : <Icon className={styles.avatar} name={'avatar'} size={20}/>
+            }
+
         <a href="#user-url" className={styles.username}>
-          Юзер Юзеров
+            {author}
         </a>
       </div>
   );

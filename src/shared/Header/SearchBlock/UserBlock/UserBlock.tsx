@@ -1,5 +1,4 @@
 import React from "react";
-//import {Break} from '../../../Break';
 import {EColor, Text} from "../../../Text";
 import styles from "./userblock.scss";
 import {Icon} from "../../../Icon";
@@ -21,7 +20,6 @@ export function UserBlock({avatarSrc, username}: IUserBlockProps) {
                 }
             </div>
             <div className={styles.username}>
-                {/*<Break size={12} />*/}
                 <Text size={20} color={username ? EColor.black : EColor.gray99}>
                     {username || 'Аноним'}
                 </Text>

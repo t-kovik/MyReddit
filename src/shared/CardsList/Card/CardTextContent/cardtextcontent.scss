@@ -28,11 +28,12 @@
   font-weight: normal;
   margin: 0;
   padding: 7px 0 0;
+  max-width: 1000px;
 }
 
 .postLink {
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   display: -webkit-box;
 }
