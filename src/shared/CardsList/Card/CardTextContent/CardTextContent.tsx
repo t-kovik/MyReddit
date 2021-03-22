@@ -1,6 +1,7 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './cardtextcontent.scss';
 import {UserLink} from "./UserLink";
+import {Post} from "../../../Post";
 
 interface IProps {
     title?: string,
@@ -9,19 +10,31 @@ interface IProps {
     date?: string
 }
 
-export function CardTextContent({title, author, avatar, date} : IProps) {
-  return (
-      <div className={styles.textContent}>
-        <div className={styles.metaData}>
-          <UserLink author={author} avatar={avatar} />
-          <span className={styles.createdAt}>
+export function CardTextContent({title, author, avatar, date}: IProps) {
+    const [isModalOpened, setIsModalOpened] = useState(false);
+    return (
+        <div className={styles.textContent}>
+            <div className="portal_root" />
+            <div className={styles.metaData}>
+                <UserLink author={author} avatar={avatar}/>
+                <span className={styles.createdAt}>
                 <span className={styles.publishedLabel}>опубликовано </span>
-              {date}
+                    {date}
             </span>
+            </div>
+            <h2 className={styles.title}>
+                <a href="#post-url" className={styles.postLink} onClick={() => {
+                    setIsModalOpened(true)
+                }}>{title}</a>
+                {isModalOpened && (
+                    <Post
+                        onClose={() => {
+                            setIsModalOpened(false)
+                        }}
+                    author={author}
+                    avatar={avatar}/>
+                )}
+            </h2>
         </div>
-        <h2 className={styles.title}>
-          <a href="#post-url" className={styles.postLink}>{title}</a>
-        </h2>
-      </div>
-  );
+    );
 }

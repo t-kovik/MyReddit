@@ -1,0 +1,54 @@
+@import "src/colors";
+
+.container {
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  border: 1px solid #D9D9D9;
+  box-sizing: border-box;
+  border-radius: 3px 3px 0 0;
+  min-height: 90px;
+}
+
+.btn {
+  align-self: flex-end;
+  padding: 17px 50px;
+  color: $white;
+  width: 220px;
+  background: #CC6633;
+  border-radius: 0 0 3px 0;
+}
+
+.username {
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 16px;
+  color: $orange;
+}
+
+.userLink {
+  display: flex;
+  align-items: center;
+}
+
+
+.commentText {
+  margin: 0;
+  padding: 12px 0;
+}
+
+.answerBtn {
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  span {
+    margin-left: 8px;
+  }
+}

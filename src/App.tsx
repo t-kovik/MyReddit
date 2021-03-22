@@ -18,6 +18,7 @@ import {useToken} from "./hooks/useToken";
 import {tokenContext} from "./shared/context/tokenContext";
 import {userContext, UserContextProvider} from './shared/context/userContext';
 import {PostsContextProvider} from "./shared/context/postsContext";
+import {commentContext} from "./shared/context/commentContext";
 //import {DropdownMenu} from "./shared/CardsList/Card/DropdownMenu";
 //import {Text} from "./shared/Text";
 
@@ -30,6 +31,8 @@ import {PostsContextProvider} from "./shared/context/postsContext";
 
 function AppComponent() {
     const [token] = useToken();
+    // const [commentValue, setCommentValue] = useState('');
+    // const CommentProvider = commentContext.Provider;
     //const [ isVisible, setIsVisible ] = React.useState(false);
     // const [ title, setTitle ] = React.useState('');
     // const [isVisible] = useIsMounted();
@@ -41,33 +44,37 @@ function AppComponent() {
     //     setList(list.concat({id: generateRandomString(), text: generateRandomString()}))
     // }
     return (
+        // <CommentProvider  value={{value: commentValue, onChange: setCommentValue,}} >
         <tokenContext.Provider value={token}>
             <UserContextProvider>
                 <PostsContextProvider>
-                    <Layout>
-                        <Header/>
-                        <Content>
-                            <CardsList/>
-                            {/*<button onClick={() => setIsVisible(!isVisible)}>Change</button>*/}
-                            {/*<input type="text" onChange={getValue(setTitle)}/>*/}
-                            {/*{isVisible && <MyHooks title={title} id='11' />}*/}
-                            {/*<button onClick={handleAdd}>Add element</button>*/}
-                            {/*<GenericList list={list.map(merge({onClick: handleItemClick}))} />*/}
-                            {/*    <GenericList list={LIST.map((item) => ({...item, onClick: () => {console.log(item.id)}}))} />*/}
-                            {/*<div style={{padding: 20}}>*/}
-                            {/*    <br/>*/}
-                            {/*    <Dropdown onClose={() => console.log('closed')}*/}
-                            {/*              onOpen={() => console.log('opened')}*/}
-                            {/*              isOpen={false}*/}
-                            {/*              button={<button>Test</button>}>*/}
-                            {/*       <CardsList />*/}
-                            {/*    </Dropdown>*/}
-                            {/*</div>*/}
-                        </Content>
-                    </Layout>
+
+                        <Layout>
+                            <Header/>
+                            <Content>
+                                <CardsList/>
+                                {/*<button onClick={() => setIsVisible(!isVisible)}>Change</button>*/}
+                                {/*<input type="text" onChange={getValue(setTitle)}/>*/}
+                                {/*{isVisible && <MyHooks title={title} id='11' />}*/}
+                                {/*<button onClick={handleAdd}>Add element</button>*/}
+                                {/*<GenericList list={list.map(merge({onClick: handleItemClick}))} />*/}
+                                {/*    <GenericList list={LIST.map((item) => ({...item, onClick: () => {console.log(item.id)}}))} />*/}
+                                {/*<div style={{padding: 20}}>*/}
+                                {/*    <br/>*/}
+                                {/*    <Dropdown onClose={() => console.log('closed')}*/}
+                                {/*              onOpen={() => console.log('opened')}*/}
+                                {/*              isOpen={false}*/}
+                                {/*              button={<button>Test</button>}>*/}
+                                {/*       <CardsList />*/}
+                                {/*    </Dropdown>*/}
+                                {/*</div>*/}
+                            </Content>
+                        </Layout>
+
                 </PostsContextProvider>
             </UserContextProvider>
         </tokenContext.Provider>
+        // </CommentProvider>
     )
 }
 
