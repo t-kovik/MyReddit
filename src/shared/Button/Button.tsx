@@ -9,11 +9,13 @@ interface IButton {
     isIcon: boolean,
     className?: string,
     sizeIcon?: number
+    onClick?: (ev:any) => void
 }
 
-export function Button({text, name, isIcon, className = styles.btn, sizeIcon = 14} : IButton) {
+export function Button({text, name, isIcon, className = styles.btn, sizeIcon = 14, onClick} : IButton) {
     return (
-        <button className={className}>
+        <button className={className}
+        onClick={onClick}>
             {
                 isIcon &&
                 <Icon name={name} size={sizeIcon} />

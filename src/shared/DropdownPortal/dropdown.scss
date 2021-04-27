@@ -7,10 +7,6 @@
   right: 15px;
   width: 150px;
   flex: 1 1 0;
-
-  //@media all and (min-width: 1024px) {
-  //  display: block;
-  //}
 }
 
 .listContainer {
@@ -19,8 +15,6 @@
 
 .list {
   position: fixed;
-  top: calc(100px + 20%);
-  right: 0;
   transform: translate(-50%, -50%);
   background-color: $white;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

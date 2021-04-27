@@ -8,12 +8,13 @@ interface IDropdownProps {
     isOpen?: boolean;
     onOpen?: () => void;
     onClose?: () => void;
+    coords?: any
 }
 
 const NOOP = () => {
 };
 
-export function DropdownPortal({button, children, isOpen, onOpen = NOOP, onClose = NOOP}: IDropdownProps) {
+export function DropdownPortal({button, children, isOpen, onOpen = NOOP, onClose = NOOP, coords}: IDropdownProps) {
     const [isDropdownOpen, setIsDropdownOpen] = React.useState(isOpen);
     React.useEffect(() => setIsDropdownOpen(isOpen), [isOpen]);
     React.useEffect(() => isDropdownOpen ? onOpen() : onClose(), [isDropdownOpen])
@@ -31,7 +32,7 @@ export function DropdownPortal({button, children, isOpen, onOpen = NOOP, onClose
             </div>
             {isDropdownOpen && (
                 ReactDOM.createPortal((<div className={styles.listContainer}>
-                    <div className={styles.list} onClick={() => setIsDropdownOpen(false)}>
+                    <div className={styles.list} style={{...coords}} onClick={() => setIsDropdownOpen(false)}>
                         {children}
                     </div>
                 </div>), node)
