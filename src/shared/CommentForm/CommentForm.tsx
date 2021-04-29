@@ -1,31 +1,28 @@
-import React, {FormEvent, useEffect, useRef, useState} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useRef} from 'react';
 import styles from './commentform.scss';
 import {Button} from "../Button";
 
 interface IProps {
-    author?: string
+    author?: string;
+    value: string;
+    onChange: (ev: ChangeEvent<HTMLTextAreaElement>) => void;
+    onSubmit: (ev: FormEvent) => void;
 }
 
-export function CommentForm({author} : IProps) {
-    const [commentValue, setCommentValue] = useState('');
+export function CommentForm({author, value, onChange, onSubmit} : IProps) {
     const ref = useRef<HTMLTextAreaElement>(null);
 
     useEffect(() => {
         ref.current?.focus();
     }, []);
 
-
-    function handleSubmit(ev: FormEvent) {
-        ev.preventDefault();
-        console.log(commentValue)
-    }
-
     return (
         <div>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={onSubmit}>
                 <textarea className={styles.input}
-                          defaultValue={`${author}, `}
-                          onChange={(e) => setCommentValue(e.target.value) }
+                          value={value}
+                          //defaultValue={`${author}, `}
+                          onChange={onChange}
                           ref={ref} />
                 <Button className={styles.btnSubmit} isIcon={false} text={'Комментировать'} />
             </form>

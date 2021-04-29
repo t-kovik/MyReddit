@@ -1,9 +1,9 @@
 import React, {useEffect, useRef} from 'react';
 import ReactDOM from 'react-dom'
 import styles from './post.scss';
-import {CommentForm} from "../CommentForm";
 import {CommentList} from "../CommentList";
 import {UserLink} from "../CardsList/Card/CardTextContent/UserLink";
+import {CommentFormContainer} from "../CommentFormContainer";
 
 interface IPost {
     onClose?: () => void,
@@ -36,7 +36,7 @@ export function Post(props: IPost) {
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi dignissimos et exercitationem ipsam itaque neque nihil ratione suscipit temporibus.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium commodi dignissimos et exercitationem ipsam itaque neque nihil ratione suscipit temporibus.</p>
             </div>
-            <CommentForm author={props.author} />
+            <CommentFormContainer  />
             <CommentList author={'Михаил Рогов'} />
         </div>
     ), node)

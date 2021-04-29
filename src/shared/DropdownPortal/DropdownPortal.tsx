@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom'
 import styles from './dropdown.scss';
 
@@ -23,7 +23,7 @@ export function DropdownPortal({button, children, isOpen, onOpen = NOOP, onClose
             setIsDropdownOpen(!isDropdownOpen)
         }
     }
-    const node = document.querySelector('#modal_root');
+    const node = document.querySelector('#dropdown_root');
     if (!node) return null;
     return(
         <div className={styles.container}>

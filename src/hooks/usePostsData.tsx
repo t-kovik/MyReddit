@@ -1,12 +1,15 @@
-import React, {useContext, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import {tokenContext} from "../shared/context/tokenContext";
+import {useDispatch, useSelector} from "react-redux";
+import {RootState, setToken} from "../store";
 
 
 export function usePostsData() {
     const [postsData, setPostsData] = useState<any[]>([]);
-    const token = useContext(tokenContext);
+    const token = useSelector<RootState, string>(state => state.token);
+    const dispatch = useDispatch();
     useEffect(() => {
+            dispatch(setToken(token));
         if (!token) return;
             axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
                 {

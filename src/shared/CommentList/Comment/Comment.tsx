@@ -4,6 +4,7 @@ import {Icon} from "../../Icon";
 import {Button} from "../../Button";
 import {CommentForm} from "../../CommentForm";
 import {CommentFormUncontrolled} from "../../CommentFormUncontrolled";
+import {CommentFormContainer} from "../../CommentFormContainer";
 
 interface IFormProps {
     isOpen?: boolean,
@@ -36,7 +37,7 @@ export function Comment({isOpen, author, isControl} : IFormProps) {
                 </div>
                 {isFormOpen && (
                     <div>
-                        { isControl ? <CommentForm author={author} />
+                        { isControl ? <CommentFormContainer />
                         : <CommentFormUncontrolled author={author} />}
                     </div>
                 )}
