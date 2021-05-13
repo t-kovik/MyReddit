@@ -1,0 +1,32 @@
+@import "src/colors";
+
+.card {
+  background-color: $white;
+  border-radius: 7px;
+  display: flex;
+  flex-flow: row wrap;
+  position: relative;
+}
+
+.card > * {
+  flex: 1 1 100%;
+}
+
+@media all and (min-width: 1024px) {
+
+  .card {
+    flex-wrap: nowrap;
+    padding: 40px;
+  }
+}
+
+@media all and (min-width: 1540px){
+  .card {
+    padding: 0 60px;
+  }
+
+  .card:hover, .card:focus-within {
+    outline: 1px solid $grayD9;
+  }
+}
+

@@ -1,0 +1,74 @@
+@import "src/colors";
+
+.textContent {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 22px 20px 13px;
+}
+
+.textContent > * {
+  flex: 1 1 100%;
+}
+
+.metaData {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  font-size: 10px;
+  line-height: 12px;
+}
+
+.createdAt, .createdAt * {
+  color: $gray99;
+}
+
+.title {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: normal;
+  margin: 0;
+  padding: 7px 0 0;
+  max-width: 1000px;
+}
+
+.postLink {
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+@media all and (min-width: 1024px) {
+  .title {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .metaData {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .textContent {
+    order:2;
+    flex-wrap: wrap-reverse;
+  }
+}
+
+@media all and (min-width: 1540px){
+  .textContent {
+    flex-basis: 672px;
+  }
+
+  .postLink::after {
+    content: '';
+    position: absolute;
+    top:0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+}
+
+
