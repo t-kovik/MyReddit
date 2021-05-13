@@ -1,6 +1,6 @@
 import React, {ChangeEvent, FormEvent, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {RootState, updateComment} from "../../store"
+import {RootState, UpdateComment} from "../../store/reducer"
 import {CommentForm} from "../CommentForm";
 
 export function CommentFormContainer() {
@@ -15,7 +15,7 @@ export function CommentFormContainer() {
 
 
     function handleChange(ev: ChangeEvent<HTMLTextAreaElement>) {
-        dispatch(updateComment(ev.target.value));
+        dispatch(UpdateComment(ev.target.value));
     }
 
     function handleSubmit(ev: FormEvent) {

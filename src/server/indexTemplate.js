@@ -1,4 +1,4 @@
-export const indexTemplate = (content, token) => `
+export const indexTemplate = (content, code) => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
@@ -7,7 +7,7 @@ export const indexTemplate = (content, token) => `
                 <title>Reddit</title>
                 <script src='/static/client.js' type='application/javascript'></script>
                 <script>
-                window.__token__ = '${token}'
+                window.__code__ = '${code}'
                 </script>
         </head>
         <body>

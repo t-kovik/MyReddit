@@ -1,16 +1,15 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useDispatch, useSelector} from "react-redux";
-import {RootState, setToken} from "../store";
+import {RootState} from "../store/reducer";
 
 
 export function usePostsData() {
     const [postsData, setPostsData] = useState<any[]>([]);
-    const token = useSelector<RootState, string>(state => state.token);
+    const token = useSelector<RootState, string>(state => state.tokenData.token);
     const dispatch = useDispatch();
     useEffect(() => {
-            dispatch(setToken(token));
-        if (!token) return;
+       if (!token) return;
             axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
                 {
                     headers: {Authorization: `bearer ${token}`}
