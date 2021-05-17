@@ -9,16 +9,20 @@ interface IButton {
     isIcon: boolean,
     className?: string,
     sizeIcon?: number
-    onClick?: (ev:any) => void
+    onClick?: (ev: any) => void,
+    disabled?: boolean,
+    type?: "button" | "submit" | "reset"
 }
 
-export function Button({text, name, isIcon, className = styles.btn, sizeIcon = 14, onClick} : IButton) {
+export function Button({text, name, isIcon, className = styles.btn, sizeIcon = 14, onClick, disabled, type}: IButton) {
     return (
         <button className={className}
-        onClick={onClick}>
+                disabled={disabled}
+                onClick={onClick}
+                type={type}>
             {
                 isIcon &&
-                <Icon name={name} size={sizeIcon} />
+                <Icon name={name} size={sizeIcon}/>
             }
             <Text mobileSize={12} size={14} color={EColor.gray99}>{text}</Text>
         </button>

@@ -2,6 +2,7 @@ import React, {ChangeEvent, FormEvent, useEffect, useRef} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, UpdateComment} from "../../store/reducer"
 import {CommentForm} from "../CommentForm";
+import {CommentFormNew} from "../CommentFormNew";
 
 export function CommentFormContainer() {
     const value = useSelector<RootState, string>(state => state.commentText);
@@ -24,10 +25,11 @@ export function CommentFormContainer() {
     }
 
     return (
-        <CommentForm
-            value={value}
-            onChange={handleChange}
-            onSubmit={handleSubmit}
-        />
+        // <CommentForm
+        //     value={value}
+        //     onChange={handleChange}
+        //     onSubmit={handleSubmit}
+        // />
+        <CommentFormNew />
     )
 }

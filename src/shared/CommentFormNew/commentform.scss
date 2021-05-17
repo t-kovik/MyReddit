@@ -1,0 +1,70 @@
+@import "src/colors";
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #D9D9D9;
+  box-sizing: border-box;
+  border-radius: 3px 3px 0 0;
+  width: 100%;
+  min-height: 90px;
+}
+
+.input[aria-invalid] {
+  border-color: red;
+}
+
+.error {
+  margin-top: 10px;
+  color: red;
+}
+
+.btnSubmit {
+  align-self: flex-end;
+  padding: 17px 50px;
+  width: 220px;
+  background: #CC6633;
+  border-radius: 0 0 3px 0;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
+  span {
+    color: $white;
+  };
+}
+
+.username {
+  margin-left: 8px;
+  font-size: 14px;
+  line-height: 16px;
+  color: $orange;
+}
+
+.userLink {
+  display: flex;
+  align-items: center;
+}
+
+
+.commentText {
+  margin: 0;
+  padding: 12px 0;
+}
+
+.answerBtn {
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  span {
+    margin-left: 8px;
+  }
+}
