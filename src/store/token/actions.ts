@@ -44,7 +44,6 @@ export const SET_TOKEN_SUCCESS = 'SET_TOKEN_SUCCESS';
          }
      )
          .then(({ data }) => {
-             console.log(data)
              dispatch(SetTokenSuccess(data['access_token']))
          })
          .catch((error) => {
