@@ -4,19 +4,22 @@ import styles from './post.scss';
 import {CommentList} from "../CommentList";
 import {UserLink} from "../CardsList/Card/CardTextContent/UserLink";
 import {CommentFormContainer} from "../CommentFormContainer";
+import {useHistory} from 'react-router-dom'
 
 interface IPost {
-    onClose?: () => void,
     author?: string,
-    avatar?: string
+    avatar?: string,
+    title?: string,
 }
 
 export function Post(props: IPost) {
     const ref = useRef<HTMLDivElement>(null);
+    const history = useHistory();
+
     useEffect(() => {
         function handleClick(ev: MouseEvent) {
             if(ev.target instanceof Node && !ref.current?.contains(ev.target)) {
-                props.onClose?.()
+                history.push('/');
             }
         }
 

@@ -50,6 +50,7 @@
   "dependencies": {
     "@types/classnames": "^2.2.11",
     "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
     "axios": "^0.21.1",
     "classnames": "^2.2.6",
     "cross-env": "^7.0.3",
@@ -59,6 +60,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
     "redux": "^4.1.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0"

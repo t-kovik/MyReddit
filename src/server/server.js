@@ -8,19 +8,19 @@ const app = express();
 
 app.use('/static', express.static('./dist/client'));
 
-app.get('/', (req, res) => {
-    res.send(
-      indexTemplate(ReactDOM.renderToString(App()))
-    );
-});
-
 app.get('/auth', (req, res) => {
     let code = req.query.code;
     console.log(code)
     res.send(
       indexTemplate(ReactDOM.renderToString(App()), code)
     );
-})
+});
+
+app.get('*', (req, res) => {
+    res.send(
+      indexTemplate(ReactDOM.renderToString(App()))
+    );
+});
 
 app.listen(3000, () => {
     console.log('Server started on http://localhost:3000');
