@@ -4,15 +4,17 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store/reducer";
 
 
+
 export function usePostsData() {
     const [postsData, setPostsData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState('');
     const [nextAfter, setNextAfter] = useState('');
-    const token = useSelector<RootState, string>(state => state.tokenData.token);
+    //const token = useSelector<RootState, string>(state => state.tokenData.token);
     const bottomOfList = useRef<HTMLDivElement>(null);
     let [nextCount, setNextCount] = useState(0);
     const [loadPosts, setLoadPosts] = useState(false);
+    const token = localStorage.getItem('token');
 
     const handleClick = () => {
         setLoadPosts(false);
@@ -20,11 +22,12 @@ export function usePostsData() {
     }
 
     useEffect(() => {
-        if(!token) return ;
+        if(token == null) return ;
         async function load() {
             setLoading(true);
             setErrorLoading('');
             try {
+                console.log('try')
                 const {data: {data: {after, children}}} = await axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
                     {
                         headers: {Authorization: `bearer ${token}`},
@@ -39,9 +42,15 @@ export function usePostsData() {
                 } else {
                     setLoadPosts(false);
                 }
-                if(!loadPosts) {
+
+                if(!loadPosts && nextCount >= 1) {
                     setNextAfter(after);
                     setPostsData(prevChildren => prevChildren.concat(...children));
+                    console.log('prevChildren')
+                } else {
+                    setNextAfter(after);
+                    setPostsData(children)
+                    console.log('children')
                 }
             } catch (error) {
                 setErrorLoading(String(error));

@@ -26,34 +26,32 @@ function AppComponent() {
     }, []);
     return (
         <Provider store={store}>
-            {mounted && (
-                <BrowserRouter>
-                    <UserContextProvider>
-                        <PostsContextProvider>
-                            <Layout>
-                                <Header/>
-                                <Content>
-                                    <Switch>
-                                        <Redirect exact from={"/"} to={"/posts"}/>
-                                        <Redirect from={"/auth"} to={"/posts"}/>
-                                        <Route path="/posts">
-                                            <CardsList/>
-                                            <Route path="/posts/:id">
-                                                <Post/>
+                {mounted && (
+                    <BrowserRouter>
+                        <UserContextProvider>
+                            <PostsContextProvider>
+                                <Layout>
+                                    <Header/>
+                                    <Content>
+                                        <Switch>
+                                            <Redirect exact from={"/"} to={"/posts"}/>
+                                            <Redirect from={"/auth"} to={"/posts"}/>
+                                            <Route path="/posts">
+                                                <CardsList/>
+                                                <Route exact path="/posts/:id" render={() => <Post/>}/>
                                             </Route>
-                                        </Route>
-                                        <Route path="*">
-                                            <h1 style={{padding: '50px', textAlign: 'center'}}>
-                                                404 — страница не найдена
-                                            </h1>
-                                        </Route>
-                                    </Switch>
-                                </Content>
-                            </Layout>
-                        </PostsContextProvider>
-                    </UserContextProvider>
-                </BrowserRouter>
-            )}
+                                            <Route path="*">
+                                                <h1 style={{padding: '50px', textAlign: 'center'}}>
+                                                    404 — страница не найдена
+                                                </h1>
+                                            </Route>
+                                        </Switch>
+                                    </Content>
+                                </Layout>
+                            </PostsContextProvider>
+                        </UserContextProvider>
+                    </BrowserRouter>
+                )}
         </Provider>
     )
 }

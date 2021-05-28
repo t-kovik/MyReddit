@@ -12,11 +12,14 @@ import {meReducer, MeState} from "./me/reducer";
 import {
     SET_TOKEN,
     SET_TOKEN_ERROR,
-    SET_TOKEN_SUCCESS, SetTokenAction,
+    SET_TOKEN_SUCCESS,
+    SetTokenAction,
     SetTokenActionError,
     SetTokenActionSuccess
 } from "./token/actions";
 import {tokenReducer, TokenState} from "./token/reducer";
+import Cookies from 'universal-cookie'
+const cookies = new Cookies();
 
 
 export type RootState = {
@@ -24,6 +27,7 @@ export type RootState = {
     tokenData: TokenState,
     me: MeState;
 }
+
 
 const initialState: RootState = {
     commentText: 'Hi, Skillbox!',
@@ -41,12 +45,6 @@ const initialState: RootState = {
      }
 }
 
-// const UPDATE_COMMENT = 'UPDATE COMMENT';
-// export const updateComment: ActionCreator<AnyAction> = (text) => ({
-//     type: UPDATE_COMMENT,
-//     text
-// });
-
 export const UPDATE_COMMENT = 'UPDATE_COMMENT';
 export type UpdateCommentAction = {
     type: typeof UPDATE_COMMENT;
@@ -58,12 +56,6 @@ export const UpdateComment: ActionCreator<UpdateCommentAction> = (text: string) 
 })
 
 
- //const SET_TOKEN = 'SET TOKEN';
- //export const setToken: ActionCreator<AnyAction> = (token) => ({
-  //   type: SET_TOKEN,
-  //   token
- //});
-
 type MyAction = UpdateCommentAction| MeRequestAction | MeRequestActionSuccess | MeRequestActionError | SetTokenAction | SetTokenActionSuccess | SetTokenActionError;
 
 export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, action) => {
@@ -73,12 +65,6 @@ export const rootReducer: Reducer<RootState, MyAction> = (state = initialState, 
                 ...state,
                 commentText: action.text
             }
-
-         // case SET_TOKEN:
-         //     return {
-         //          ...state,
-         //          token: window.__token__
-         //      }
         case ME_REQUEST:
         case ME_REQUEST_SUCCESS:
         case ME_REQUEST_ERROR:

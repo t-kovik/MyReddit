@@ -15,13 +15,14 @@ export function CardsList() {
                 </div>
             )}
             {
-                postsData.map((post) => (
+                postsData.map((post, i) => (
                     <Card
                         key={post.data.id}
+                        index={i}
                         title={post.data.title}
                         author={post.data.author}
                         avatar={post.data.sr_detail.icon_img}
-                        preview={post.data.sr_detail.header_img}
+                        preview={post.data.thumbnail}
                         date={new Date(post.data.sr_detail.created_utc * 1000).toLocaleString()}
                     />
                 ))}
