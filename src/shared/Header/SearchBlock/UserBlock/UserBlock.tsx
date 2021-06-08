@@ -5,7 +5,7 @@ import {Icon} from "../../../Icon";
 
 interface IUserBlockProps {
     avatarSrc?: string,
-    username?: string
+    username?: string,
 }
 
 export function UserBlock({avatarSrc, username}: IUserBlockProps) {

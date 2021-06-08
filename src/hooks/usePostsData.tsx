@@ -1,16 +1,11 @@
 import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {useSelector} from "react-redux";
-import {RootState} from "../store/reducer";
-
-
 
 export function usePostsData() {
     const [postsData, setPostsData] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const [errorLoading, setErrorLoading] = useState('');
     const [nextAfter, setNextAfter] = useState('');
-    //const token = useSelector<RootState, string>(state => state.tokenData.token);
     const bottomOfList = useRef<HTMLDivElement>(null);
     let [nextCount, setNextCount] = useState(0);
     const [loadPosts, setLoadPosts] = useState(false);
@@ -22,7 +17,6 @@ export function usePostsData() {
     }
 
     useEffect(() => {
-        if(token == null) return ;
         async function load() {
             setLoading(true);
             setErrorLoading('');
@@ -46,11 +40,9 @@ export function usePostsData() {
                 if(!loadPosts && nextCount >= 1) {
                     setNextAfter(after);
                     setPostsData(prevChildren => prevChildren.concat(...children));
-                    console.log('prevChildren')
                 } else {
                     setNextAfter(after);
                     setPostsData(children)
-                    console.log('children')
                 }
             } catch (error) {
                 setErrorLoading(String(error));

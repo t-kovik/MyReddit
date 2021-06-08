@@ -8,10 +8,10 @@ interface IProps {
     author?: string,
     avatar?: string,
     date?: string,
-    index: number,
+    id: string,
 }
 
-export function CardTextContent({title, author, avatar, date, index}: IProps) {
+export function CardTextContent({title, author, avatar, date, id}: IProps) {
     return (
         <div className={styles.textContent}>
             <div className="portal_root" />
@@ -23,9 +23,9 @@ export function CardTextContent({title, author, avatar, date, index}: IProps) {
             </span>
             </div>
             <h2 className={styles.title} onClick={() => {
-                console.log(index)}}>
+                console.log(id)}}>
                 <Link to={{
-                    pathname: `/posts/${index}`
+                    pathname: `/posts/${id}`
                 }} className={styles.postLink}>{title}</Link>
             </h2>
         </div>

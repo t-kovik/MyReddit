@@ -47,10 +47,10 @@ export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string
     )
         .then(({data}) => {
             dispatch(SetTokenSuccess(data['access_token']));
+            localStorage.setItem('token', data['access_token']);
         })
         .catch((error) => {
             console.log(error);
             dispatch(SetTokenError(String(error)));
         })
-
 }
