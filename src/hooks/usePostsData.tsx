@@ -10,6 +10,7 @@ export function usePostsData() {
     let [nextCount, setNextCount] = useState(0);
     const [loadPosts, setLoadPosts] = useState(false);
     const token = localStorage.getItem('token');
+    const [initCount, setInitCount] = useState(0);
 
     const handleClick = () => {
         setLoadPosts(false);
@@ -17,6 +18,9 @@ export function usePostsData() {
     }
 
     useEffect(() => {
+        if(initCount == 0) {
+            setInitCount(initCount + 1);
+        }
         async function load() {
             setLoading(true);
             setErrorLoading('');
@@ -57,7 +61,9 @@ export function usePostsData() {
             },{
                 rootMargin: '10px',
             });
+        console.log(bottomOfList.current)
             if(bottomOfList.current) {
+                console.log('1')
                 observer.observe(bottomOfList.current);
             }
             return () => {
@@ -66,7 +72,7 @@ export function usePostsData() {
                 }
             }
 
-    }, [bottomOfList.current, nextAfter, token, loadPosts]);
+    }, [bottomOfList.current, nextAfter, token, loadPosts, initCount]);
     return {
         loading,
         errorLoading,
