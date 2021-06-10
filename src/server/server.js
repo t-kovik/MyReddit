@@ -20,7 +20,6 @@ if(!IS_DEV) {
 
 app.get('/auth', (req, res) => {
     let code = req.query.code;
-    console.log(code)
     res.send(
       indexTemplate(ReactDOM.renderToString(App()), code)
     );
