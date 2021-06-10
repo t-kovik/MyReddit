@@ -35,13 +35,16 @@ export const SetTokenError: ActionCreator<SetTokenActionError> = (error: string)
 })
 
 export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
+    // @ts-ignore
     let code = window.__code__;
     dispatch(SetToken());
+
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
-        `grant_type=authorization_code&code=${code}&redirect_uri=http://localhost:3000/auth`,
+        `grant_type=authorization_code&code=${code}&redirect_uri=https://react-my-reddit.herokuapp.com/auth`,
         {
-            auth: {username: process.env.CLIENT_ID || '', password: '2ILXfaV4DCcPbN7kihd-wdewhWr_zg'},
+            // @ts-ignore
+            auth: {username: process.env.CLIENT_ID || '', password: process.env.SECRET},
             headers: {'Content-type': 'application/x-www-form-urlencoded'}
         }
     )
