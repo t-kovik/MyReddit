@@ -29,7 +29,7 @@ module.exports = {
     //Путь папки начала сборки(Точка входа)
     entry: [
         path.resolve(__dirname, '../src/client/index.jsx'),
-        'webpack-hot-middleware/client?path=http://localhost:3001/static/__webpack_hmr',
+        'webpack-hot-middleware/client?path=https://react-my-project-skillbox.herokuapp.com/static/__webpack_hmr',
 
     ],
     //Путь папки конечного файла (Точка вывода)
