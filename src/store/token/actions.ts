@@ -46,7 +46,6 @@ export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string
             auth: {username: process.env.CLIENT_ID || '', password: process.env.SECRET},
             headers: {
                 'Content-type': 'application/x-www-form-urlencoded',
-                "Access-Control-Allow-Origin": "*"
             }
         }
     )
