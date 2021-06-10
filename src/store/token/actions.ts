@@ -41,7 +41,7 @@ export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string
 
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
-        `grant_type=authorization_code&code=${code}&redirect_uri=https://react-my-reddit.herokuapp.com/auth`,
+        `grant_type=authorization_code&code=${code}&redirect_uri=https://react-my-project-skillbox.herokuapp.com/auth`,
         {
             // @ts-ignore
             auth: {username: process.env.CLIENT_ID || '', password: process.env.SECRET},
