@@ -38,7 +38,6 @@ export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string
     // @ts-ignore
     let code = window.__code__;
     dispatch(SetToken());
-
     axios.post(
         'https://www.reddit.com/api/v1/access_token',
         `grant_type=authorization_code&code=${code}&redirect_uri=https://react-my-project-skillbox.herokuapp.com/auth`,

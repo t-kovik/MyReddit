@@ -25,7 +25,6 @@ export function usePostsData() {
             setLoading(true);
             setErrorLoading('');
             try {
-                console.log('try')
                 const {data: {data: {after, children}}} = await axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
                     {
                         headers: {Authorization: `bearer ${token}`},
@@ -61,9 +60,7 @@ export function usePostsData() {
             },{
                 rootMargin: '10px',
             });
-        console.log(bottomOfList.current)
             if(bottomOfList.current) {
-                console.log('1')
                 observer.observe(bottomOfList.current);
             }
             return () => {
