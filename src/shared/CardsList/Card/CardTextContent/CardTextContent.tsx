@@ -1,17 +1,17 @@
-import React, {useContext, useState} from 'react';
+import React from 'react';
 import styles from './cardtextcontent.scss';
 import {UserLink} from "./UserLink";
-import {Post} from "../../../Post";
+import {Link} from 'react-router-dom'
 
 interface IProps {
     title?: string,
     author?: string,
     avatar?: string,
-    date?: string
+    date?: string,
+    id: string,
 }
 
-export function CardTextContent({title, author, avatar, date}: IProps) {
-    const [isModalOpened, setIsModalOpened] = useState(false);
+export function CardTextContent({title, author, avatar, date, id}: IProps) {
     return (
         <div className={styles.textContent}>
             <div className="portal_root" />
@@ -22,18 +22,11 @@ export function CardTextContent({title, author, avatar, date}: IProps) {
                     {date}
             </span>
             </div>
-            <h2 className={styles.title}>
-                <a href="#post-url" className={styles.postLink} onClick={() => {
-                    setIsModalOpened(true)
-                }}>{title}</a>
-                {isModalOpened && (
-                    <Post
-                        onClose={() => {
-                            setIsModalOpened(false)
-                        }}
-                    author={author}
-                    avatar={avatar}/>
-                )}
+            <h2 className={styles.title} onClick={() => {
+                console.log(id)}}>
+                <Link to={{
+                    pathname: `/posts/${id}`
+                }} className={styles.postLink}>{title}</Link>
             </h2>
         </div>
     );

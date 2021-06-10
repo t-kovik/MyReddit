@@ -1,5 +1,26 @@
-@media all and (min-width: 1024px){
+@import "src/colors";
+
+@media all and (min-width: 1024px) {
   .cardsList {
-    //padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.loadButton {
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 4px;
+  background: $orange;
+  flex-grow: 0;
+  align-self: center;
+
+  span {
+    font-size: 18px;
+    color: $white;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 }

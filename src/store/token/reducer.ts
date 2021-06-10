@@ -1,5 +1,7 @@
  import {SetTokenAction, SetTokenActionError, SetTokenActionSuccess} from "./actions";
 import {Reducer} from "react";
+ import Cookies from 'universal-cookie'
+ const cookies = new Cookies();
 
  export type TokenState = {
      error: string;
@@ -25,7 +27,7 @@ import {Reducer} from "react";
              return {
                  ...state,
                  token: action.token,
-                 loadingToken: false
+                 loadingToken: false,
              }
          default:
              return state

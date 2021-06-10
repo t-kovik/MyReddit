@@ -10,14 +10,14 @@ interface IProps {
     author?: string,
     avatar?: string,
     preview?: string,
-    date?: string
+    date?: string,
+    id: string,
 }
 
-export function Card({title, author, avatar, preview, date}: IProps) {
-
+export function Card({title, author, avatar, preview, date, id}: IProps) {
     return (
         <li className={styles.card}>
-            <CardTextContent title={title} author={author} avatar={avatar} date={date}/>
+            <CardTextContent title={title} author={author} avatar={avatar} date={date} id={id}/>
             <CardPreview preview={preview}/>
             <CardMenu/>
             <CardControls/>

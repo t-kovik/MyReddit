@@ -1,28 +1,88 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import axios from "axios";
-import {useDispatch, useSelector} from "react-redux";
-import {RootState} from "../store/reducer";
-
 
 export function usePostsData() {
     const [postsData, setPostsData] = useState<any[]>([]);
-    const token = useSelector<RootState, string>(state => state.tokenData.token);
-    const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false);
+    const [errorLoading, setErrorLoading] = useState('');
+    const [nextAfter, setNextAfter] = useState('');
+    const bottomOfList = useRef<HTMLDivElement>(null);
+    let [nextCount, setNextCount] = useState(0);
+    const [loadPosts, setLoadPosts] = useState(false);
+    const token = localStorage.getItem('token');
+    const [initCount, setInitCount] = useState(0);
+
+    const handleClick = () => {
+        setLoadPosts(false);
+        setNextCount(0);
+    }
+
     useEffect(() => {
-       if (!token) return;
-            axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
-                {
-                    headers: {Authorization: `bearer ${token}`}
-                })
+        if(initCount == 0) {
+            setInitCount(initCount + 1);
+        }
+        async function load() {
+            setLoading(true);
+            setErrorLoading('');
+            try {
+                console.log('try')
+                const {data: {data: {after, children}}} = await axios.get('https://oauth.reddit.com/r/popular/best.json?sr_detail=true',
+                    {
+                        headers: {Authorization: `bearer ${token}`},
+                        params: {
+                            limit: 10,
+                            after: nextAfter,
+                        }
+                    })
+                setNextCount(nextCount + 1);
+                if(nextCount >= 3) {
+                    setLoadPosts(true);
+                } else {
+                    setLoadPosts(false);
+                }
 
-                .then((resp) => {
-                    const postsData1 = resp.data.data.children
-                    setPostsData(postsData1)
+                if(!loadPosts && nextCount >= 1) {
+                    setNextAfter(after);
+                    setPostsData(prevChildren => prevChildren.concat(...children));
+                } else {
+                    setNextAfter(after);
+                    setPostsData(children)
+                }
+            } catch (error) {
+                setErrorLoading(String(error));
+            }
+            setLoading(false);
+        }
 
-                })
-                .catch(console.log)
-        },
-        [token])
-    return [postsData]
+            const observer = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting && !loadPosts) {
+                    load();
+                }
+            },{
+                rootMargin: '10px',
+            });
+        console.log(bottomOfList.current)
+            if(bottomOfList.current) {
+                console.log('1')
+                observer.observe(bottomOfList.current);
+            }
+            return () => {
+                if(bottomOfList.current) {
+                    observer.unobserve(bottomOfList.current);
+                }
+            }
+
+    }, [bottomOfList.current, nextAfter, token, loadPosts, initCount]);
+    return {
+        loading,
+        errorLoading,
+        nextAfter,
+        bottomOfList,
+        postsData,
+        nextCount,
+        loadPosts,
+        handleClick
+    }
 }
+
 

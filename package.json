@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "build": "./node_modules/.bin/webpack",
     "build:dev": "cross-env NODE_ENV=development webpack --config webpack.config.js",
-    "build:prod": "cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
     "dev": "cross-env NODE_ENV=development CLIENT_ID=xQCWNRd1p7KWtw node ./bin/dev.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./dist/server/server.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +19,29 @@
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {
+  "dependencies": {
+    "@types/classnames": "^2.2.11",
+    "@types/react-cookies": "^0.1.0",
+    "@types/react-redux": "^7.1.16",
+    "@types/react-router-dom": "^5.1.7",
+    "@types/redux-persist": "^4.3.1",
+    "@types/universal-cookie": "^3.0.0",
+    "axios": "^0.21.1",
+    "classnames": "^2.2.6",
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "file-loader": "^6.2.0",
+    "formik": "^2.2.6",
+    "react": "^17.0.1",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^17.0.1",
+    "react-redux": "^7.2.4",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.3.0",
+    "universal-cookie": "^4.0.4",
     "@hot-loader/react-dom": "^17.0.1",
     "@types/enzyme": "^3.10.8",
     "@types/express": "^4.17.11",
@@ -46,20 +71,5 @@
     "webpack-dev-server": "^3.11.1",
     "webpack-hot-middleware": "^2.25.0",
     "webpack-node-externals": "^2.5.2"
-  },
-  "dependencies": {
-    "@types/classnames": "^2.2.11",
-    "@types/react-redux": "^7.1.16",
-    "axios": "^0.21.1",
-    "classnames": "^2.2.6",
-    "cross-env": "^7.0.3",
-    "express": "^4.17.1",
-    "file-loader": "^6.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-redux": "^7.2.4",
-    "redux": "^4.1.0",
-    "redux-devtools-extension": "^2.13.9",
-    "redux-thunk": "^2.3.0"
   }
 }

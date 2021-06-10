@@ -2,17 +2,12 @@ import express, {query} from 'express';
 import ReactDOM from 'react-dom/server';
 import { indexTemplate} from './indexTemplate';
 import {App} from '../App';
-import axios from "axios";
+
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 app.use('/static', express.static('./dist/client'));
-
-app.get('/', (req, res) => {
-    res.send(
-      indexTemplate(ReactDOM.renderToString(App()))
-    );
-});
 
 app.get('/auth', (req, res) => {
     let code = req.query.code;
@@ -20,9 +15,15 @@ app.get('/auth', (req, res) => {
     res.send(
       indexTemplate(ReactDOM.renderToString(App()), code)
     );
-})
+});
 
-app.listen(3000, () => {
-    console.log('Server started on http://localhost:3000');
+app.get('*', (req, res) => {
+    res.send(
+      indexTemplate(ReactDOM.renderToString(App()))
+    );
+});
+
+app.listen(PORT, () => {
+    console.log(`Server started on http://localhost:${PORT}`);
 })
 
