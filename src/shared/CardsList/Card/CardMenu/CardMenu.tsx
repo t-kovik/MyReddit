@@ -1,4 +1,5 @@
 import React from 'react';
+// @ts-ignore
 import styles from './cardmenu.scss';
 //import {Dropdown} from "../../../Dropdown";
 import {CardMenuItemsList} from "./CardMenuItemsList";

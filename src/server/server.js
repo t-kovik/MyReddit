@@ -4,6 +4,7 @@ import { indexTemplate} from './indexTemplate';
 import {App} from '../App';
 import compression from 'compression';
 import helmet from 'helmet';
+import axios from "axios";
 
 const PORT = process.env.PORT || 3000;
 const IS_DEV = process.env.NODE_ENV !== 'production';
@@ -19,10 +20,20 @@ if(!IS_DEV) {
 }
 
 app.get('/auth', (req, res) => {
-    let code = req.query.code;
-    res.send(
-      indexTemplate(ReactDOM.renderToString(App()), code)
-    );
+    axios.post(
+      'https://www.reddit.com/api/v1/access_token',
+      `grant_type=authorization_code&code=${req.query.code}&redirect_uri=https://react-my-project-skillbox.herokuapp.com/auth`,
+      {
+          auth: { username: process.env.CLIENT_ID, password: '2ILXfaV4DCcPbN7kihd-wdewhWr_zg'},
+          headers: { 'Content-type': 'application/x-www-form-urlencoded'}
+      }
+    )
+      .then(({ data }) => {
+          res.send(
+            indexTemplate(ReactDOM.renderToString(App()), data['access_token']),
+          );
+      })
+      .catch(console.log)
 });
 
 app.get('*', (req, res) => {

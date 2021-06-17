@@ -36,25 +36,7 @@ export const SetTokenError: ActionCreator<SetTokenActionError> = (error: string)
 
 export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
     // @ts-ignore
-    let code = window.__code__;
-    dispatch(SetToken());
-    axios.post(
-        'https://www.reddit.com/api/v1/access_token',
-        `grant_type=authorization_code&code=${code}&redirect_uri=https://react-my-project-skillbox.herokuapp.com/auth`,
-        {
-            // @ts-ignore
-            auth: {username: process.env.CLIENT_ID || '', password: process.env.SECRET},
-            headers: {
-                'Content-type': 'application/x-www-form-urlencoded',
-            }
-        }
-    )
-        .then(({data}) => {
-            dispatch(SetTokenSuccess(data['access_token']));
-            localStorage.setItem('token', data['access_token']);
-        })
-        .catch((error) => {
-            console.log(error);
-            dispatch(SetTokenError(String(error)));
-        })
+    let token = window.__token__;
+    dispatch(SetTokenSuccess(token));
+    localStorage.setItem('token', token);
 }

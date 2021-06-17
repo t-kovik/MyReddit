@@ -8,12 +8,7 @@ import {useDispatch} from "react-redux";
 
 export function SearchBlock() {
     const { iconImg, name} = useContext(userContext);
-    const dispatch = useDispatch();
     useEffect(() => {
-        const token = localStorage.getItem('token');
-        if(!token) {
-            dispatch(saveToken());
-        }
     }, [])
     return (
       <div className={styles.searchBlock}>
