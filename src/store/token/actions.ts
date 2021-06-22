@@ -35,7 +35,6 @@ export const SetTokenError: ActionCreator<SetTokenActionError> = (error: string)
 })
 
 export const saveToken = (): ThunkAction<void, RootState, unknown, Action<string>> => (dispatch) => {
-    // @ts-ignore
     let token = window.__token__;
     dispatch(SetTokenSuccess(token));
     localStorage.setItem('token', token);
