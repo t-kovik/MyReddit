@@ -1,4 +1,4 @@
-export const indexTemplate = (token, content) => `
+export const indexTemplate = (content, token) => `
     <!DOCTYPE html>
     <html lang="en">
         <head>
