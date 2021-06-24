@@ -9,6 +9,8 @@ import {useDispatch} from "react-redux";
 export function SearchBlock() {
     const { iconImg, name} = useContext(userContext);
     useEffect(() => {
+        const dispatch = useDispatch();
+        dispatch(saveToken());
     }, [])
     return (
       <div className={styles.searchBlock}>
