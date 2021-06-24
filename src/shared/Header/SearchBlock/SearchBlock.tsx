@@ -8,8 +8,8 @@ import {useDispatch} from "react-redux";
 
 export function SearchBlock() {
     const { iconImg, name} = useContext(userContext);
+    const dispatch = useDispatch();
     useEffect(() => {
-        const dispatch = useDispatch();
         dispatch(saveToken());
     }, [])
     return (
