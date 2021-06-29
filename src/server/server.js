@@ -24,7 +24,7 @@ app.get('/auth', (req, res) => {
       'https://www.reddit.com/api/v1/access_token',
       `grant_type=authorization_code&code=${req.query.code}&redirect_uri=https://react-my-project-skillbox.herokuapp.com/auth`,
       {
-          auth: { username: process.env.CLIENT_ID, password: '2ILXfaV4DCcPbN7kihd-wdewhWr_zg'},
+          auth: { username: process.env.CLIENT_ID, password: 'FHbEHlHKDgksRbb06Fe6lv1z2g5BDA'},
           headers: { 'Content-type': 'application/x-www-form-urlencoded'}
       }
     )
