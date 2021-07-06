@@ -1,12 +1,12 @@
-import React, {ChangeEvent, FormEvent, useEffect, useRef} from 'react';
+import React, {ChangeEvent, FormEvent, useEffect, useRef, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {RootState, UpdateComment} from "../../store/reducer"
 import {CommentForm} from "../CommentForm";
 import {CommentFormNew} from "../CommentFormNew";
 
 export function CommentFormContainer() {
-    const value = useSelector<RootState, string>(state => state.commentText);
-    const dispatch = useDispatch();
+    //const value = useSelector<RootState, string>(state => state.commentText);
+    //const dispatch = useDispatch();
 
     const ref = useRef<HTMLTextAreaElement>(null);
 
@@ -15,21 +15,22 @@ export function CommentFormContainer() {
     }, []);
 
 
-    function handleChange(ev: ChangeEvent<HTMLTextAreaElement>) {
-        dispatch(UpdateComment(ev.target.value));
-    }
+    // function handleChange(ev: ChangeEvent<HTMLInputElement>) {
+    //     //    dispatch(UpdateComment(ev.target.value));
+    //     setValue(ev.target.value);
+    // }
 
-    function handleSubmit(ev: FormEvent) {
-        ev.preventDefault();
-        console.log(value)
-    }
+    // function handleSubmit(ev: FormEvent) {
+    //    ev.preventDefault();
+    // }
+
+
 
     return (
-        // <CommentForm
-        //     value={value}
-        //     onChange={handleChange}
-        //     onSubmit={handleSubmit}
-        // />
-        <CommentFormNew />
+        <div>
+            <CommentForm />
+                {/*<CommentFormNew />*/}
+        </div>
+
     )
 }
